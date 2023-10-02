@@ -15,12 +15,17 @@ const Desktop = () => {
   const [open, setOpen] = useState(false);
  
 
+  console.log(name)
+
   const handleSignUpClick = e => {
     if(name){
       setOpen(true);
-      setName('');
-      setEmail('');
-      setTimeout(()=> setOpen(false), 3000);
+      setTimeout(()=> {
+        setName('');
+        setEmail('');
+        setOpen(false);
+      }      
+    , 3000);
     }
 
   }
@@ -79,7 +84,9 @@ const Desktop = () => {
                   Sign up with email
                 </Button>
                 <Box sx={{width: '100%', textAlign: 'center'}}>
-                <Typography variant="body1" sx={{fontSize: '0.9vw'}}>Already have an account? <Link to='#'>Log in</Link></Typography>
+                <Typography variant="body1" sx={{fontSize: '0.9vw'}}>Already have an account? <Link to='#' color='#222' sx={{':hover': {
+                    cursor: 'pointer'
+                  }}}>Log in</Link></Typography>
                 </Box>
               </Stack>
             </Box>
@@ -112,15 +119,13 @@ const Desktop = () => {
         </Stack>
       }
 
-      <Dialog open={open} sx={{ m: 0, p: 0 }}>
-        <DialogContent sx={{ width: `${size.width/2}px`, height: `${size.width/3}px`}}>
-          <Stack spacing={2} alignItems='center' justifyContent='center' height='100%'>
-            <CheckCircleRoundedIcon sx={{ width: `${size.width/10}px`, height: `${size.width/10}px` }} />
-            <Typography component='div' sx={{fontSize: `${size.width/55}px`}}>Thank you for signing up, {name}!</Typography>
-            <Typography component='div'  sx={{fontSize: `${size.width/55}px`}}>Your magic link has been sent to your email.</Typography>
+      <Dialog open={open}  sx={{m: 0, p: 0, }} fullWidth PaperProps={{ sx: { height: 350 }}}>
+        <DialogContent>
+          <Stack spacing={2} alignItems='center' justifyContent='center' height='100%' width='100%'>
+            <CheckCircleRoundedIcon sx={{ width: '8vw', height: '8vw'}} />          
+            <Typography component='div' sx={{fontSize: '22xp'}}>Thank you for signing up, {name}!</Typography>
+            <Typography component='div' sx={{fontSize: '18px'}}>Your magic link has been sent to your email.</Typography>           
           </Stack>
-
-
         </DialogContent>
       </Dialog>
 

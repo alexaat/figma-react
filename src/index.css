@@ -18,3 +18,16 @@ code {
   text-align: center;
 
 }
+
+
+@media only screen and (max-width: 768px) {
+  body {
+    background-image: url('./images/bubble_text.jpg');
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position: 50% 20%;
+  }
+  .main{
+    display: none;
+  }
+}

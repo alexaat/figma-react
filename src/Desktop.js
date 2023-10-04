@@ -1,14 +1,10 @@
-import { Stack, Box, AppBar, Toolbar, Typography, TextField, Button, Link, DialogContent, Dialog, InputAdornment, IconButton } from "@mui/material";
+import { Stack, Box, AppBar, Toolbar, Typography, Link, DialogContent, Dialog } from "@mui/material";
 import MenuButton from './MenuButton.js'
 import logo from './images/logo.jpeg';
 import phones from './images/phones.png';
-import magicLink from './images/magic_link.png';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import useWindowSize from "./useWindowSize.js";
-import CancelRoundedIcon from '@mui/icons-material/CancelRounded';
-
-import { useState } from 'react';
-
+import { useState, useEffect } from 'react';
 import LogInComponent from './LogInComponent.js';
 
 const Desktop = () => {
@@ -18,6 +14,11 @@ const Desktop = () => {
   const [open, setOpen] = useState(false);
   const [nameTextFieldFocus, setNameTextFieldFocus] = useState(false);
   const [emailTextFieldFocus, setEmailTextFieldFocus] = useState(false);
+
+  useEffect(() => {
+    document.title = "Sign Up";  
+  }, []);
+
 
   const handleSignUpClick = e => {
     if(name){
@@ -122,63 +123,8 @@ const Desktop = () => {
             handleSignUpClick={handleSignUpClick}
             nameTextFieldFocus={nameTextFieldFocus}
             emailTextFieldFocus={emailTextFieldFocus}
-            submitButtonText='Continue with Magic Link'/>
-          
-          {/* <Stack spacing={1} sx={{width: '100%'}}>
-          <TextField
-                  label="Display Name"
-                  type='text'
-                  onChange={(e) => setName(e.target.value)}
-                  value={name}
-                  id="text-field-name"
-                  InputProps={{
-                      endAdornment: (
-                      <InputAdornment position="end">
-                          {nameTextFieldFocus &&
-                           <IconButton id="clear-name-icon-name"  sx={{p: 0}}>
-                              <CancelRoundedIcon/>
-                           </IconButton>                           
-                           }
-                      </InputAdornment>
-                    )
-                   }}
-                   />                
-                
-                <TextField
-                  label="Email address"
-                  type='email'
-                  onChange={ e => setEmail(e.target.value)}
-                  value={email}
-                  id="text-field-email"
-                  InputProps={{
-                    endAdornment: (
-                    <InputAdornment position="end">
-                        {emailTextFieldFocus &&
-                         <IconButton id="clear-name-icon-email" sx={{p: 0}}>
-                            <CancelRoundedIcon/>
-                         </IconButton>                         
-                         }
-                    </InputAdornment>
-                  )
-                 }}                  
-                  />   
-            
-            <Button
-                  variant="text"
-                  className='btn'
-                  style={{fontSize: '2vw', color: '#FFF' }}
-                  sx={{ mr: 2, backgroundColor: '#222', borderRadius: '26px', height: '52px', ':hover': {
-                    bgcolor: '#666'
-
-                  } }}
-                  startIcon={<Box component='img' alt="magic link icon" src={magicLink} width='3.5vw' height='3.5vw'></Box>}
-                  onClick={handleSignUpClick}
-                  >
-                    <Typography component='div' sx={{fontSize: '3.5vw'}}>Continue with Magic Link</Typography>
-                
-                </Button>
-          </Stack> */}
-
+            submitButtonText='Continue with Magic Link'/>         
+        
         </Stack>
       }
 
